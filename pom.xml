@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   Licensed under the Apache License, Version 2.0 (the "License").
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   Create by Zollty Tsou (Contact: zollty@163.com, http://blog.zollty.com)
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.jretty</groupId>
+    <artifactId>jretty</artifactId>
+    <version>1.0</version>
+  </parent>
+  <artifactId>tomcat-embed-boot</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+  <name>tomcat-embed-boot</name>
+  <description>tomcat-embed-boot, START tomcat using Java Main method.</description>
+
+  <properties>
+    <java.version>1.7</java.version>
+    <tomcat.version>8.0.47</tomcat.version>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  
+  <dependencies>
+
+    <dependency>
+      <groupId>org.apache.tomcat.embed</groupId>
+      <artifactId>tomcat-embed-core</artifactId>
+      <version>${tomcat.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    
+    <!-- Optional... -->
+    <!-- <dependency>
+      <groupId>org.apache.tomcat.embed</groupId>
+      <artifactId>tomcat-embed-el</artifactId>
+      <version>${tomcat.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.tomcat.embed</groupId>
+      <artifactId>tomcat-embed-logging-juli</artifactId>
+      <version>${tomcat.version}</version>
+      <scope>provided</scope>
+    </dependency> -->
+
+    <!-- for test -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
+
+  </dependencies>
+
+  <!-- BUILD Management -->
+  <build>
+    <directory>${basedir}/target</directory>
+    <sourceDirectory>${basedir}/src/main/java</sourceDirectory>
+    <outputDirectory>${basedir}/target/classes</outputDirectory>
+    <resources>
+      <resource>
+        <directory>${basedir}/src/main/resources</directory>
+      </resource>
+    </resources>
+
+    <testSourceDirectory>${basedir}/src/test/java</testSourceDirectory>
+    <testOutputDirectory>${basedir}/target/test-classes</testOutputDirectory>
+    <testResources>
+      <testResource>
+        <directory>${basedir}/src/test/resources</directory>
+      </testResource>
+    </testResources>
+
+    <!-- PLUGINS Config Management -->
+    <pluginManagement>
+      <plugins>
+
+        <!-- jar-plugin config -->
+        <plugin>
+          <artifactId>maven-jar-plugin</artifactId>
+          <configuration>
+            <archive>
+              <addMavenDescriptor>false</addMavenDescriptor>
+              <manifestEntries>
+                <Built-By>Zollty Tsou</Built-By>
+              </manifestEntries>
+            </archive>
+          </configuration>
+        </plugin>
+
+      </plugins>
+    </pluginManagement>
+
+  </build>
+
+  <!--项目开发者列表 -->
+  <developers>
+    <developer>
+      <!--SCM里项目开发者的唯一标识符 -->
+      <id>zollty</id>
+      <!--项目开发者的全名 -->
+      <name>Zollty Tsou</name>
+      <!--项目开发者的email -->
+      <email>zollty@163.com</email>
+      <!--项目开发者的主页的URL -->
+      <url>http://blog.zollty.com</url>
+      <roles>
+        <role>Project Manager</role>
+        <role>Architect</role>
+      </roles>
+      <organization>jretty-org</organization>
+      <organizationUrl>http://www.jretty.org</organizationUrl>
+    </developer>
+  </developers>
+
+</project>
