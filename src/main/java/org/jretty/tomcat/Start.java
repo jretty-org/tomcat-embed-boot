@@ -16,15 +16,7 @@ import org.apache.catalina.startup.Tomcat;
 import org.apache.catalina.startup.Tomcat.DefaultWebXmlListener;
 
 /**
- *
- * @author hengyunabc
- * 
- * 把应用原来的src/main/webapp/WEB-INF 移动到 src/main/resources/WEB-INF下，
- * 把在src/main/webapp下面的所有文件移动到 src/main/META-INF/resources目录下
- *
- * https://github.com/hengyunabc/executable-embeded-tomcat-sample
- * 
- * java -jar target/executable-embeded-tomcat-jar-0.0.1-SNAPSHOT.jar
+ * @author zollty
  */
 class Start {
     
