@@ -272,6 +272,7 @@ public class EmbededStandardJarScanner implements JarScanner {
 				if (urlStr.endsWith(Constants.JAR_EXT)) {
 					URL jarURL = new URL("jar:" + urlStr + "!/");
 //					callback.scan((JarURLConnection) jarURL.openConnection(), webappPath, isWebapp);
+					System.out.println("-----" + jarURL);
 					callback.scan(new UrlJar(jarURL), webappPath, isWebapp);
 				} else {
 					File f;

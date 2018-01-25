@@ -3,6 +3,8 @@
  */
 package org.jretty.tomcat;
 
+import java.io.File;
+
 /**
  * tomcat management.
  * 
@@ -25,5 +27,9 @@ public class TomcatManage {
     
     public static void shutdown(String serverHost, int serverPort) {
         Shutdown.shutdown(serverHost, serverPort);
+    }
+    
+    public static File createTempDir(String folderName) {
+        return Start.createTempDir(folderName);
     }
 }

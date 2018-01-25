@@ -16,10 +16,16 @@ class Shutdown {
     }
 
     public static void shutdown() {
-        shutdown("localhost", 8005);
+        shutdown(null, null);
     }
 
-    public static void shutdown(String serverHost, int serverPort) {
+    public static void shutdown(String serverHost, Integer serverPort) {
+        if (serverHost == null) {
+            serverHost = "localhost";
+        }
+        if (serverPort == null) {
+            serverPort = 8005;
+        }
         SocketClientImpl sc = new SocketClientImpl();
         try {
             sc.setDistHost(serverHost);
