@@ -16,7 +16,7 @@ import org.apache.catalina.startup.Tomcat;
 import org.apache.catalina.startup.Tomcat.DefaultWebXmlListener;
 
 /**
- * @author zollty
+ * @see TomcatManage
  */
 class Start {
     

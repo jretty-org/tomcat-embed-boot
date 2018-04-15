@@ -1,9 +1,7 @@
-/**
- * 
- */
 package org.jretty.tomcat;
 
 import java.io.File;
+import java.io.IOException;
 
 /**
  * tomcat management.
@@ -31,5 +29,9 @@ public class TomcatManage {
     
     public static File createTempDir(String folderName) {
         return Start.createTempDir(folderName);
+    }
+    
+    public static void deleteAllFilesOfDir(File path) throws IOException {
+        Start.deleteAllFilesOfDir(path);
     }
 }

@@ -55,6 +55,21 @@ public class TomcatConfig {
         return tomcatBaseDir;
     }
 
+    /**
+     * Tomcat needs a directory for temp files. This should be the
+     * first method called.
+     *
+     * <p>
+     * By default, if this method is not called, we use:
+     * <ul>
+     *  <li>system properties - catalina.base, catalina.home</li>
+     *  <li>$PWD/tomcat.$PORT</li>
+     * </ul>
+     * (/tmp doesn't seem a good choice for security).
+     *
+     * <p>
+     * TODO: disable work dir if not needed ( no jsp, etc ).
+     */
     public void setTomcatBaseDir(String tomcatBaseDir) {
         this.tomcatBaseDir = tomcatBaseDir;
     }

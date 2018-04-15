@@ -7,7 +7,7 @@ import org.jretty.tomcat.socket.SocketClient;
 import org.jretty.tomcat.socket.SocketClientImpl;
 
 /**
- * @author zollty
+ * @see TomcatManage
  */
 class Shutdown {
 
