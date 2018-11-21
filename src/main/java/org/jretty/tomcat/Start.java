@@ -93,6 +93,7 @@ class Start {
         tomcat.getServer().setPort(cfg.getShutdownPort()); 
         tomcat.getServer().await();
         System.out.println("正在关闭tomcat，shutdown......");
+        tomcat.stop();
 //        
 //        sleep(100L);
 //        System.out.println("删除tomcat临时路径......");
