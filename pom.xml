@@ -18,10 +18,10 @@
   <parent>
     <groupId>org.jretty</groupId>
     <artifactId>jretty</artifactId>
-    <version>1.0</version>
+    <version>21</version>
   </parent>
   <artifactId>tomcat-embed-boot</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.0.0</version>
   <packaging>jar</packaging>
   <name>tomcat-embed-boot</name>
   <description>tomcat-embed-boot, START tomcat using Java Main method.</description>
@@ -66,47 +66,6 @@
     </dependency>
 
   </dependencies>
-
-  <!-- BUILD Management -->
-  <build>
-    <directory>${basedir}/target</directory>
-    <sourceDirectory>${basedir}/src/main/java</sourceDirectory>
-    <outputDirectory>${basedir}/target/classes</outputDirectory>
-    <resources>
-      <resource>
-        <directory>${basedir}/src/main/resources</directory>
-      </resource>
-    </resources>
-
-    <testSourceDirectory>${basedir}/src/test/java</testSourceDirectory>
-    <testOutputDirectory>${basedir}/target/test-classes</testOutputDirectory>
-    <testResources>
-      <testResource>
-        <directory>${basedir}/src/test/resources</directory>
-      </testResource>
-    </testResources>
-
-    <!-- PLUGINS Config Management -->
-    <pluginManagement>
-      <plugins>
-
-        <!-- jar-plugin config -->
-        <plugin>
-          <artifactId>maven-jar-plugin</artifactId>
-          <configuration>
-            <archive>
-              <addMavenDescriptor>false</addMavenDescriptor>
-              <manifestEntries>
-                <Built-By>Zollty Tsou</Built-By>
-              </manifestEntries>
-            </archive>
-          </configuration>
-        </plugin>
-
-      </plugins>
-    </pluginManagement>
-
-  </build>
 
   <!--项目开发者列表 -->
   <developers>
