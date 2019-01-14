@@ -18,6 +18,31 @@ public class TomcatConfig {
     private Integer shutdownPort = 8005;
     private Boolean enableSsi = false;
     private Boolean enableJsp = false;
+    /**
+     * Maximum amount of worker threads.
+     */
+    private int maxThreads = 0;
+    /**
+     * Minimum amount of worker threads.
+     */
+    private int minSpareThreads = 0;
+    /**
+     * When Tomcat expects data from the client, this is the time Tomcat will
+     * wait for that data to arrive before closing the connection.
+     */
+    private int connectionTimeout = 0;
+    /**
+     * Maximum number of connections that the server will accept and process at any
+     * given time. Once the limit has been reached, the operating system may still
+     * accept connections based on the "acceptCount" property.
+     */
+    private int maxConnections = 0;
+
+    /**
+     * Maximum queue length for incoming connection requests when all possible request
+     * processing threads are in use.
+     */
+    private int acceptCount = 0;
 
     public String getHostName() {
         return hostName;
@@ -98,6 +123,50 @@ public class TomcatConfig {
         this.enableJsp = enableJsp;
     }
     
+    public int getMaxThreads() {
+        return this.maxThreads;
+    }
+
+    public void setMaxThreads(int maxThreads) {
+        this.maxThreads = maxThreads;
+    }
+
+    public int getMinSpareThreads() {
+        return this.minSpareThreads;
+    }
+
+    public void setMinSpareThreads(int minSpareThreads) {
+        this.minSpareThreads = minSpareThreads;
+    }
+    
+    /**
+     * When Tomcat expects data from the client, this is the time Tomcat will
+     * wait for that data to arrive before closing the connection.
+     */
+    public int getConnectionTimeout() {
+        return connectionTimeout;
+    }
+    
+    public void setConnectionTimeout(int timeout) {
+        this.connectionTimeout = timeout;
+    }
+    
+    public int getMaxConnections() {
+        return this.maxConnections;
+    }
+
+    public void setMaxConnections(int maxConnections) {
+        this.maxConnections = maxConnections;
+    }
+
+    public int getAcceptCount() {
+        return this.acceptCount;
+    }
+
+    public void setAcceptCount(int acceptCount) {
+        this.acceptCount = acceptCount;
+    }
+    
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
@@ -117,6 +186,16 @@ public class TomcatConfig {
         builder.append(enableSsi);
         builder.append(", enableJsp=");
         builder.append(enableJsp);
+        builder.append(", minSpareThreads=");
+        builder.append(minSpareThreads);
+        builder.append(", maxThreads=");
+        builder.append(maxThreads);
+        builder.append(", connectionTimeout=");
+        builder.append(connectionTimeout);
+        builder.append(", maxConnections=");
+        builder.append(maxConnections);
+        builder.append(", acceptCount=");
+        builder.append(acceptCount);
         builder.append("]");
         return builder.toString();
     }

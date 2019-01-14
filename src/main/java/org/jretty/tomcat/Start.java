@@ -14,6 +14,8 @@ import org.apache.catalina.LifecycleListener;
 import org.apache.catalina.Wrapper;
 import org.apache.catalina.startup.Tomcat;
 import org.apache.catalina.startup.Tomcat.DefaultWebXmlListener;
+import org.apache.coyote.AbstractProtocol;
+import org.apache.coyote.ProtocolHandler;
 
 /**
  * @see TomcatManage
@@ -52,6 +54,25 @@ class Start {
         
         // 设置URI编码支持中文
         tomcat.getConnector().setURIEncoding("UTF-8");
+        ProtocolHandler handler = tomcat.getConnector().getProtocolHandler();
+        if (handler instanceof AbstractProtocol) {
+            AbstractProtocol<?> protocol = (AbstractProtocol<?>) handler;
+            if(cfg.getMinSpareThreads() > 0) {
+                protocol.setMinSpareThreads(cfg.getMinSpareThreads());
+            }
+            if(cfg.getMaxThreads() > 0) {
+                protocol.setMaxThreads(cfg.getMaxThreads());
+            }
+            if(cfg.getConnectionTimeout() > 0) {
+                protocol.setConnectionTimeout(cfg.getConnectionTimeout());
+            }
+            if(cfg.getMaxConnections() > 0) {
+                protocol.setMaxConnections(cfg.getMaxConnections());
+            }
+            if(cfg.getAcceptCount() > 0) {
+                protocol.setBacklog(cfg.getAcceptCount());
+            }
+        }
         
         Host host = tomcat.getHost();
         Context context = tomcat.addWebapp(host, cfg.getContextPath(), 
