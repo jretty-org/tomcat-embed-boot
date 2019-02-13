@@ -17,8 +17,8 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.jretty</groupId>
-    <artifactId>jretty</artifactId>
-    <version>21</version>
+    <artifactId>commons-parent</artifactId>
+    <version>1.0-RELEASE</version>
   </parent>
   <artifactId>tomcat-embed-boot</artifactId>
   <version>1.1.0</version>
@@ -56,6 +56,12 @@
       <version>${tomcat.version}</version>
       <scope>provided</scope>
     </dependency> -->
+    
+    <dependency>
+      <groupId>org.jretty</groupId>
+      <artifactId>socket-tool</artifactId>
+      <version>1.0</version>
+    </dependency>
 
     <!-- for test -->
     <dependency>

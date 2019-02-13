@@ -3,8 +3,8 @@ package org.jretty.tomcat;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
-import org.jretty.tomcat.socket.SocketClient;
-import org.jretty.tomcat.socket.SocketClientImpl;
+import org.jretty.socket.tcp.SocketClient;
+import org.jretty.socket.tcp.SocketClientImpl;
 
 /**
  * @see TomcatManage
