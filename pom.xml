@@ -21,14 +21,14 @@
     <version>21</version>
   </parent>
   <artifactId>tomcat-embed-boot</artifactId>
-  <version>1.0.0</version>
+  <version>1.1.0</version>
   <packaging>jar</packaging>
   <name>tomcat-embed-boot</name>
   <description>tomcat-embed-boot, START tomcat using Java Main method.</description>
 
   <properties>
     <java.version>1.7</java.version>
-    <tomcat.version>8.0.47</tomcat.version>
+    <tomcat.version>8.5.38</tomcat.version>
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

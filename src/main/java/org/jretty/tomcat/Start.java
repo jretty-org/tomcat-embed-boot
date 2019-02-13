@@ -70,7 +70,7 @@ class Start {
                 protocol.setMaxConnections(cfg.getMaxConnections());
             }
             if(cfg.getAcceptCount() > 0) {
-                protocol.setBacklog(cfg.getAcceptCount());
+                protocol.setAcceptCount(cfg.getAcceptCount());
             }
         }
         
