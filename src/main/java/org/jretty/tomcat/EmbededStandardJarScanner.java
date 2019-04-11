@@ -22,6 +22,7 @@ import org.apache.tomcat.JarScannerCallback;
 import org.apache.tomcat.util.ExceptionUtils;
 import org.apache.tomcat.util.res.StringManager;
 import org.apache.tomcat.util.scan.Constants;
+import org.apache.tomcat.util.scan.JarFileUrlJar;
 import org.apache.tomcat.util.scan.StandardJarScanFilter;
 import org.apache.tomcat.util.scan.UrlJar;
 
@@ -262,18 +263,20 @@ public class EmbededStandardJarScanner implements JarScanner {
 		}
 
 		URLConnection conn = url.openConnection();
+		String urlStr = url.toString();
 		if (conn instanceof JarURLConnection) {
-		    
-		    callback.scan(new UrlJar(url.openConnection().getURL()), webappPath, isWebapp);
+		    System.out.println("-----scan UrlJar: " + urlStr);
+		    callback.scan(new UrlJar(conn.getURL()), webappPath, isWebapp);
 //			callback.scan((JarURLConnection) conn, webappPath, isWebapp);
 		} else {
-			String urlStr = url.toString();
+			System.out.println("-----scan: " + urlStr);
 			if (urlStr.startsWith("file:") || urlStr.startsWith("http:") || urlStr.startsWith("https:")) {
 				if (urlStr.endsWith(Constants.JAR_EXT)) {
-					URL jarURL = new URL("jar:" + urlStr + "!/");
+//					URL jarURL = new URL("jar:" + urlStr + "!/");
 //					callback.scan((JarURLConnection) jarURL.openConnection(), webappPath, isWebapp);
-					System.out.println("-----" + jarURL);
-					callback.scan(new UrlJar(jarURL), webappPath, isWebapp);
+//					System.out.println("-----" + jarURL);
+//					callback.scan(new UrlJar(jarURL), webappPath, isWebapp);
+				    callback.scan(new JarFileUrlJar(url, false), webappPath, isWebapp);
 				} else {
 					File f;
 					try {
