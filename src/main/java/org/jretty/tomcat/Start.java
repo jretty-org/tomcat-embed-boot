@@ -28,7 +28,7 @@ class Start {
             return;
         }
         TomcatConfig cfg = new TomcatConfig();
-        cfg.setContextDocBase("D:/1sync/zoa-static");
+        cfg.setDocBase("D:/1sync/zoa-static");
         cfg.setContextPath("/zoa");
         cfg.setEnableSsi(true);
         startTomcat(cfg);
@@ -44,7 +44,7 @@ class Start {
         System.out.println(cfg.toString());
         System.out.println("start to start: " + cfg.getHostName() + ":" + cfg.getPort() + cfg.getContextPath());
         System.out.println("tomcatBaseDir: " + tomcatBaseDir);
-        System.out.println("contextDocBase: " + cfg.getContextDocBase());
+        System.out.println("docBase: " + cfg.getDocBase());
         
         Tomcat tomcat = new Tomcat();
         tomcat.setBaseDir(tomcatBaseDir);
@@ -76,7 +76,7 @@ class Start {
         
         Host host = tomcat.getHost();
         Context context = tomcat.addWebapp(host, cfg.getContextPath(), 
-                cfg.getContextDocBase(), (LifecycleListener) new EmbededContextConfig());
+                cfg.getDocBase(), (LifecycleListener) new EmbededContextConfig());
         
         if (!cfg.getEnableJsp()) {
             addMyWebXmlListener(context);

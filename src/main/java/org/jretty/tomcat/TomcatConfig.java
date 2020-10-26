@@ -13,7 +13,7 @@ public class TomcatConfig {
     private String hostName = "localhost";
     private Integer port = 8080;
     private String contextPath = "/";
-    private String contextDocBase;
+    private String docBase;
     private String tomcatBaseDir;
     private Integer shutdownPort = 8005;
     private Boolean enableSsi = false;
@@ -23,7 +23,7 @@ public class TomcatConfig {
      */
     private int maxThreads = 0;
     /**
-     * Minimum amount of worker threads.
+     * Minimum amount of worker threads. if not set, default value is 10
      */
     private int minSpareThreads = 0;
     /**
@@ -68,12 +68,12 @@ public class TomcatConfig {
         this.contextPath = contextPath;
     }
 
-    public String getContextDocBase() {
-        return contextDocBase;
+    public String getDocBase() {
+        return docBase;
     }
 
-    public void setContextDocBase(String contextDocBase) {
-        this.contextDocBase = contextDocBase;
+    public void setDocBase(String docBase) {
+        this.docBase = docBase;
     }
 
     public String getTomcatBaseDir() {
@@ -176,8 +176,8 @@ public class TomcatConfig {
         builder.append(port);
         builder.append(", contextPath=");
         builder.append(contextPath);
-        builder.append(", contextDocBase=");
-        builder.append(contextDocBase);
+        builder.append(", docBase=");
+        builder.append(docBase);
         builder.append(", tomcatBaseDir=");
         builder.append(tomcatBaseDir);
         builder.append(", shutdownPort=");

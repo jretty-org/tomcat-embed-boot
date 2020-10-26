@@ -20,6 +20,7 @@ import org.apache.tomcat.JarScanType;
 import org.apache.tomcat.JarScanner;
 import org.apache.tomcat.JarScannerCallback;
 import org.apache.tomcat.util.ExceptionUtils;
+import org.apache.tomcat.util.descriptor.web.FragmentJarScannerCallback;
 import org.apache.tomcat.util.res.StringManager;
 import org.apache.tomcat.util.scan.Constants;
 import org.apache.tomcat.util.scan.JarFileUrlJar;
@@ -251,6 +252,12 @@ public class EmbededStandardJarScanner implements JarScanner {
 		}
 	}
 
+    private boolean nestedJar(String url) {
+        int idx = url.indexOf(".jar!");
+        int idx2 = url.lastIndexOf(".jar!");
+        return idx != idx2;
+    }
+
 	/*
 	 * Scan a URL for JARs with the optional extensions to look at all files and
 	 * all directories.
@@ -266,7 +273,12 @@ public class EmbededStandardJarScanner implements JarScanner {
 		String urlStr = url.toString();
 		if (conn instanceof JarURLConnection) {
 		    System.out.println("-----scan UrlJar: " + urlStr);
-		    callback.scan(new UrlJar(conn.getURL()), webappPath, isWebapp);
+		    if(nestedJar(urlStr) && !(callback instanceof FragmentJarScannerCallback)) {
+		        //ScanTest.scan(new UrlJar(conn.getURL()), webappPath, isWebapp);
+		        //callback.scan(new JarFileUrlNestedJar(conn.getURL()), webappPath, isWebapp);
+		    } else {
+		        callback.scan(new UrlJar(conn.getURL()), webappPath, isWebapp);
+		    }
 //			callback.scan((JarURLConnection) conn, webappPath, isWebapp);
 		} else {
 			System.out.println("-----scan: " + urlStr);
